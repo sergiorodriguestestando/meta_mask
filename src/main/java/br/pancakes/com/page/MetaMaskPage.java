@@ -61,10 +61,14 @@ public class MetaMaskPage extends BasePage {
 	}
 
 	public void RealizarSwap(String tokenOrigem, String tokenDestito, String inputSlippage) {
+		
+		//autenticação
 		escrever(inputSenha, "12345678");
 		clicar(btnDesbloqeurar);
 		IrParaPagina("https://exchange.pancakeswap.finance/#/swap");
-
+		
+		
+		
 		pancekePage.ValoresPancakeSwap(tokenOrigem, tokenDestito, inputSlippage);
 
 		rolagemParaCima();

@@ -33,7 +33,7 @@ public class BasePage {
 	static String navegador = "CHROME-METAMASK";
 	// static String navegador = "CHROME";
 	static String urlPagina = "https://exchange.pancakeswap.finance/#/swap";
-	// https://www.canalcliente.com.br/portal/canal_cliente/index.htm
+
 
 	static WebDriverWait espera;
 
@@ -70,8 +70,8 @@ public class BasePage {
 		} else if (navegador.equals("CHROME-METAMASK")) {
 			String url = "https://exchange.pancakeswap.finance/#/swap";
 			//local do driver
-			System.setProperty("webdriver.chrome.driver", "C:\\Selenium\\BrowserDriver\\chromedriver94_4_96.exe");
 	
+			System.setProperty("webdriver.chrome.driver", "src\\test\\java\\driver\\chromedriver94_4_96.exe");
 
 			ChromeOptions options = new ChromeOptions();
 			//colocar o caminho do seu navegador aqui

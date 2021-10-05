@@ -18,10 +18,10 @@ public class MetaMaskTeste {
 	
 	public void RealizarTransacoes(String tokenOrigem, String tokenDestino, String inputSlippage) {
 		BasePage.abrirPaginaInicial();
-	//    metaMaskPage.AdicionarToken(token);
+	  //  metaMaskPage.AdicionarToken(token);
     	metaMaskPage.RealizarSwap(tokenOrigem, tokenDestino, inputSlippage);
-		metaMaskPage.RealizarLiquidity(tokenOrigem, tokenDestino);
-		metaMaskPage.RealizarColheita();
+	//	metaMaskPage.RealizarLiquidity(tokenOrigem, tokenDestino);
+	//	metaMaskPage.RealizarColheita();
 	//	metaMaskPage.ValidarGás();
 		BasePage.FecharNavegador();
 

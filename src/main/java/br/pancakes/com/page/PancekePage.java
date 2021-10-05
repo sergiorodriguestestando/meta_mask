@@ -28,15 +28,16 @@ public class PancekePage extends BasePage {
 	By id = By.id("token-search-input");
 
 	By btnSlippage = By.cssSelector("#open-settings-dialog-button");
+	By btnValorSlippage = By.xpath("//button[text()='0.5%']");
 	By inputSlippage = By.cssSelector(".sc-jrAGrp.eALlWT");
-	By btnFechartSlippage = By.cssSelector(".sc-bdfBwQ.fxYfwL");
+	By btnFechartSlippage = By.cssSelector("button.sc-hKFxyN.YaON.sc-eCApnc.fAYopv");
 
 	By balance = By.cssSelector(".sc-eishCr.ktsCfQ.token-amount-input");
 	By btnMax = By.xpath("//button[text()='MAX']");
 
 	By contratoToken = By.cssSelector("//div[@title='Pepper Finance']");
 
-	By btnTokenSwapDestino = By.xpath("//div[text()='To']/../../../..//button");
+	By btnTokenSwapDestino = By.xpath("//div[text()='Select a currency']");
 
 	// liquidy
 	By btnTokenLiquidyDestino = By.xpath("//div[text()='Select a currency']");
@@ -45,8 +46,8 @@ public class PancekePage extends BasePage {
 
 	By inputPesquisaToken2 = By.xpath("//input[@id='token-search-input']");
 	By inputValorToken2 = By.xpath("//div[text()='To (estimated)']/../../../..//input");
-	By inputValorTeste = By.cssSelector(".sc-eishCr.ktsCfQ.token-amount-input");
-	By inputValorOrigem = By.cssSelector(".sc-eishCr.ktsCfQ.token-amount-input");
+	By inputValorDestino = By.cssSelector("#swap-currency-output input.sc-iMCRTP.iOdHiq.token-amount-input");
+	By inputValorOrigem = By.cssSelector("input.sc-iMCRTP.iOdHiq.token-amount-input");
 
 	By nomeMoeda = By.cssSelector(".sc-gsTCUz.hJWxft");
 	By textSeletToken = By.xpath("//div[text()='Select a token']");
@@ -67,10 +68,10 @@ public class PancekePage extends BasePage {
 		clickDuplo(btnMax);
 		String valor = obterTexto(inputValorOrigem);
 
-		while (valor.equals("")) {
-			clickDuplo(btnMax);
-			valor = obterTexto(inputValorOrigem);
-		}
+//		while (valor.equals("")) {
+//			clickDuplo(btnMax);
+//			valor = obterTexto(inputValorOrigem);
+//		}
 
 		// DENTINO
 		clicar(btnTokenSwapDestino);
@@ -78,13 +79,15 @@ public class PancekePage extends BasePage {
 		escrever(inputPesquisaToken2, tokenDestino);
 		tempo();
 		pressionarEnter(inputPesquisaToken2);
-		EsperarElementoOff(textSeletToken);
-		String valorInput = obterTexto(inputValorTeste);
-
-		while (valorInput.equals("")) {
-			valorInput = obterTexto(inputValorTeste);
-			System.out.println(valor);
-		}
+	//	EsperarElementoOff(textSeletToken);
+		String valorInput = obterTexto(inputValorDestino);
+//
+//		while (valorInput.equals("")) {
+//			valorInput = obterTexto(inputValorDestino);
+//			System.out.println(valor);
+//		}
+		
+		
 
 		String moeda = obterTextoToken(nomeMoeda);
 
@@ -146,7 +149,8 @@ public class PancekePage extends BasePage {
 
 	public PancekePage RealizarSlippage(String slippage) {
 		clicar(btnSlippage);
-		escrever(inputSlippage, slippage);
+	//	escrever(inputSlippage, slippage);
+		clicar(btnValorSlippage);
 		clicar(btnFechartSlippage);
 		return this;
 	}

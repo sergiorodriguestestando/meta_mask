@@ -8,7 +8,7 @@ public class RunMetaMaskTeste {
 		
 
 		MetaMaskTeste meMaskTeste = new MetaMaskTeste();
-		meMaskTeste.RealizarTransacoes("ZEFI", "BUSD", "1");
+		meMaskTeste.RealizarTransacoes("CAKE", "BUSD", "1");
 		//meMaskTeste.RealizarTransacoes("ZEFI", "BUSD", "2");
 		//meMaskTeste.RealizarTransacoes("ZEFI", "BUSD", "3");
 	}
