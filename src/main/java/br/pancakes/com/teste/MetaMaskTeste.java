@@ -11,19 +11,21 @@ public class MetaMaskTeste {
 
 	MetaMaskPage metaMaskPage = new MetaMaskPage();
 
+
 	BasePage base = new BasePage();
 	String token = "";
 	String qtd = "";
 
 	
-	public void RealizarTransacoes(String tokenOrigem, String tokenDestino, String inputSlippage) {
-		BasePage.abrirPaginaInicial();
+	public void RealizarTransacoes(String tokenOrigem, String tokenDestino, String qtd) {
+		//BasePage.abrirPaginaInicial();
 	  //  metaMaskPage.AdicionarToken(token);
-    	metaMaskPage.RealizarSwap(tokenOrigem, tokenDestino, inputSlippage);
+		
+    	metaMaskPage.consultarValores(tokenOrigem, tokenDestino, qtd);
 	//	metaMaskPage.RealizarLiquidity(tokenOrigem, tokenDestino);
 	//	metaMaskPage.RealizarColheita();
 	//	metaMaskPage.ValidarGás();
-		BasePage.FecharNavegador();
+	//	BasePage.FecharNavegador();
 
 	}
 }

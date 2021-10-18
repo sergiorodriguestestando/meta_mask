@@ -59,6 +59,17 @@ public class MetaMaskPage extends BasePage {
 		clicar(btnAdicionarTokens);
 		return this;
 	}
+	
+	
+	public MetaMaskPage consultarValores(String tokenOrigem,String tokenDestito, String qtd) {
+     
+		
+	//	pancekePage.ValoresPancakeSwap(tokenOrigem, tokenDestito, qtd);
+		
+		pancekePage.ValoresPancakeSwapTESTE(tokenOrigem, tokenDestito, qtd);
+	
+		return this;
+	}
 
 	public void RealizarSwap(String tokenOrigem, String tokenDestito, String inputSlippage) {
 		

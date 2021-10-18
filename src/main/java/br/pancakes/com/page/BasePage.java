@@ -29,11 +29,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage {
 
 	static WebDriver driver;
-	// static String navegador = "CHROME-HEADLESS";
-	static String navegador = "CHROME-METAMASK";
-	// static String navegador = "CHROME";
-	static String urlPagina = "https://exchange.pancakeswap.finance/#/swap";
-
+	 static String navegador = "CHROME-HEADLESS";
+	// static String navegador = "CHROME-METAMASK";
+//	static String navegador = "CHROME";
+	static String urlPagina = "https://pancakeswap.finance/swap";
 
 	static WebDriverWait espera;
 
@@ -41,18 +40,18 @@ public class BasePage {
 	public static void abrirPaginaInicial() {
 
 		if (navegador.equals("CHROME")) {
-			File file = new File("src\\test\\resources\\drives\\chromedriver94_4_96.exe");
-			System.setProperty("webdriver.chrome.driver", file.getPath());
+
+			System.setProperty("webdriver.chrome.driver", "src\\test\\java\\driver\\chromedriver94_4_96.exe");
 			driver = new ChromeDriver();
-			espera = new WebDriverWait(driver, 100);
+			espera = new WebDriverWait(driver, 10);
 			driver.navigate().to(urlPagina);
 			driver.manage().window().maximize();
 
 		}
 
 		else if (navegador.equals("CHROME-HEADLESS")) {
-			File file = new File("src\\test\\resources\\drives\\chromedriver94_4_96.exe");
-			System.setProperty("webdriver.chrome.driver", file.getPath());
+			
+			System.setProperty("webdriver.chrome.driver", "src\\test\\java\\driver\\chromedriver94_4_96.exe");
 			HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 			chromePrefs.put("profile.default_content_settings.popups", 0);
 			chromePrefs.put("download.default_directory", "c:\\arquivos");
@@ -63,20 +62,20 @@ public class BasePage {
 			cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 			cap.setCapability(ChromeOptions.CAPABILITY, options);
 			driver = new ChromeDriver(cap);
-			espera = new WebDriverWait(driver, 100);
+			espera = new WebDriverWait(driver, 10);
 			driver.navigate().to(urlPagina);
 			driver.manage().window().maximize();
 
 		} else if (navegador.equals("CHROME-METAMASK")) {
 			String url = "https://exchange.pancakeswap.finance/#/swap";
-			//local do driver
-	
+			// local do driver
+
 			System.setProperty("webdriver.chrome.driver", "src\\test\\java\\driver\\chromedriver94_4_96.exe");
 
 			ChromeOptions options = new ChromeOptions();
-			//colocar o caminho do seu navegador aqui
+			// colocar o caminho do seu navegador aqui
 			options.addArguments("user-data-dir=C:/Users/sergio.rodrigues/AppData/Local/Google/Chrome/User Data");
-			
+
 			options.addArguments("start-maximized");
 
 			driver = new ChromeDriver(options);
@@ -90,7 +89,7 @@ public class BasePage {
 	public static void FecharNavegador() {
 		driver.quit();
 	}
-	
+
 	public static void FecharNavegadorAtual() {
 		driver.close();
 	}
@@ -130,7 +129,6 @@ public class BasePage {
 
 	public String verificarMsgErro(By by) {
 		// espera.until(ExpectedConditions.visibilityOfElementLocated(by));
-	
 
 		try {
 			WebElement element = driver.findElement(by);
@@ -143,13 +141,40 @@ public class BasePage {
 
 	}
 
+	public String verificarElementoPagina(By by) {
+
+		try {
+			espera.until(ExpectedConditions.visibilityOfElementLocated(by));
+			espera.until(ExpectedConditions.visibilityOf(driver.findElement(by)));
+			WebElement element = driver.findElement(by);
+			return element.getText();
+		} catch (Exception e) {
+
+			return "ausente";
+		}
+
+	}
+
+	public Boolean ValidarElementonNaPagina(By by) {
+
+		try {
+			espera.until(ExpectedConditions.visibilityOfElementLocated(by));
+			espera.until(ExpectedConditions.visibilityOf(driver.findElement(by)));
+			return false;
+		} catch (Exception e) {
+
+			return true;
+		}
+
+	}
+
 	public static void IrParaPagina(String texto) {
 		driver.get(texto);
 	}
 
 	public void tempo() {
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -176,6 +201,7 @@ public class BasePage {
 
 	public void escrever(By by, String texto) {
 		espera.until(ExpectedConditions.visibilityOfElementLocated(by));
+		espera.until(ExpectedConditions.visibilityOf(driver.findElement(by)));
 		driver.findElement(by).clear();
 		driver.findElement(by).sendKeys(texto);
 	}
@@ -202,6 +228,7 @@ public class BasePage {
 
 	public void clicar(By by) {
 		espera.until(ExpectedConditions.visibilityOfElementLocated(by));
+		espera.until(ExpectedConditions.visibilityOf(driver.findElement(by)));
 		driver.findElement(by).click();
 	}
 
@@ -233,7 +260,9 @@ public class BasePage {
 	}
 
 	public void pressionarEnter(By by) {
-		espera.until(ExpectedConditions.visibilityOfElementLocated(by));
+		espera.until(ExpectedConditions.visibilityOf(driver.findElement(by)));
+
+		// espera.until(ExpectedConditions.visibilityOfElementLocated(by));
 		WebElement textbox = driver.findElement(by);
 		textbox.sendKeys(Keys.ENTER);
 	}
@@ -245,6 +274,7 @@ public class BasePage {
 
 	public void clickDuplo(By by) {
 		// espera.until(ExpectedConditions.visibilityOfElementLocated(by));
+		espera.until(ExpectedConditions.visibilityOf(driver.findElement(by)));
 		WebElement element = driver.findElement(by);
 		Actions act = new Actions(driver);
 		act.moveToElement(element).click().build().perform();
@@ -259,12 +289,12 @@ public class BasePage {
 
 	public String obterTexto(By by) {
 		espera.until(ExpectedConditions.visibilityOfElementLocated(by));
+		espera.until(ExpectedConditions.visibilityOf(driver.findElement(by)));
 		String texto = driver.findElement(by).getAttribute("value");
 		return texto;
 	}
 
 	public String obterTextoToken(By by) {
-		espera.until(ExpectedConditions.visibilityOfElementLocated(by));
 		String texto = driver.findElement(by).getText();
 		return texto;
 	}
@@ -282,6 +312,46 @@ public class BasePage {
 
 		}
 		return valor;
+	}
+
+	public void clicarPrimeiro(By by) {
+
+		List<WebElement> elementsList = driver.findElements(by);
+		for (WebElement checkBox : elementsList) {
+
+//			String text = checkBox.getText();
+//			System.out.println(text);
+
+			Actions act = new Actions(driver);
+			act.moveToElement(checkBox).click().build().perform();
+			break;
+
+		}
+
+	}
+	
+	public String pegarPrimeiroValor(By by) {
+		
+		
+		String text = null;
+		
+		try {
+			List<WebElement> elementsList = driver.findElements(by);
+			for (WebElement checkBox : elementsList) {
+
+				 text = checkBox.getText();
+			
+
+				break;
+
+			}
+			return text;
+
+		} catch (Exception e) {
+			return "não encontrou elemento";
+		}
+
+		
 	}
 
 	public String javaScript() {
