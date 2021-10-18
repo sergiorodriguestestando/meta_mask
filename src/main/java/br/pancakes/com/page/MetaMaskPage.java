@@ -66,7 +66,7 @@ public class MetaMaskPage extends BasePage {
 		
 	//	pancekePage.ValoresPancakeSwap(tokenOrigem, tokenDestito, qtd);
 		
-		pancekePage.ValoresPancakeSwapTESTE(tokenOrigem, tokenDestito, qtd);
+		pancekePage.BuscarValoresPancakes(tokenOrigem, tokenDestito, qtd);
 	
 		return this;
 	}

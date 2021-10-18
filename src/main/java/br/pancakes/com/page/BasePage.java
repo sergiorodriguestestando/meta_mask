@@ -29,9 +29,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage {
 
 	static WebDriver driver;
-	 static String navegador = "CHROME-HEADLESS";
+	// static String navegador = "CHROME-HEADLESS";
 	// static String navegador = "CHROME-METAMASK";
-//	static String navegador = "CHROME";
+	static String navegador = "CHROME";
 	static String urlPagina = "https://pancakeswap.finance/swap";
 
 	static WebDriverWait espera;

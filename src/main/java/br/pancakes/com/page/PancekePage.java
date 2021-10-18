@@ -126,7 +126,7 @@ public class PancekePage extends BasePage {
 		return this;
 	}
 
-	public PancekePage ValoresPancakeSwapTESTE(String tokenOrigem, String tokenDestino, String qtd) {
+	public PancekePage BuscarValoresPancakes(String tokenOrigem, String tokenDestino, String qtd) {
 		String elemento = null;
 		Boolean resultadoElemento = null;
 

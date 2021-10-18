@@ -17,7 +17,7 @@ import br.pancakes.com.page.BasePage;
 
 	
 	})
-public class RunCliente {
+public class RunPancakes {
 	
 	static BasePage base = new BasePage();
 
