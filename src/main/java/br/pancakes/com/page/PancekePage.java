@@ -166,9 +166,8 @@ public class PancekePage extends BasePage {
 				pressionarEnter(inputPesquisaTokDestino);
 				escrever(inputValorToken1, qtd);
 
-			} else if (!resultadoElemento) {
-				clicar(btnFechar);
-				System.out.println("Sem dados");
+					
+				
 
 			} else {
 				tempo();
@@ -199,29 +198,34 @@ public class PancekePage extends BasePage {
 			IrParaPagina("https://pancakeswap.finance/swap");
 
 		} else {
+			
+			
+				tempo();
+				clicar(btnTokenDestino);
+				tempo();
+				escrever(inputPesquisaTokDestino, tokenDestino);
+				tempo();
+				pressionarEnter(inputPesquisaTokDestino);
+				tempo();
+				escrever(inputValorToken1, qtd);
+				tempo();
 
-			tempo();
-			clicar(btnTokenDestino);
-			tempo();
-			escrever(inputPesquisaTokDestino, tokenDestino);
-			tempo();
-			pressionarEnter(inputPesquisaTokDestino);
-			tempo();
-			escrever(inputValorToken1, qtd);
-			tempo();
+				// SAÍDA
+				System.out.println("---------------------------------------------------------------------");
+				valorInput = obterTexto(inputValorDestino);
+				System.out.println("TOKEN ORIGEM: " + obterTextoToken(ValorTokenOrigem));
+				valor = obterTexto(inputValorToken1);
+				System.out.println(" MAX: " + valor);
+				System.out.println("TOKEN DESTINO: " + tokenDestino);
+				System.out.println("VALOR: " + valorInput);
+				Date date = java.util.Calendar.getInstance().getTime();
+				System.out.println(date);
+				IrParaPagina("https://pancakeswap.finance/swap");
+				return this;
+				
+			
 
-			// SAÍDA
-			System.out.println("---------------------------------------------------------------------");
-			valorInput = obterTexto(inputValorDestino);
-			System.out.println("TOKEN ORIGEM: " + obterTextoToken(ValorTokenOrigem));
-			valor = obterTexto(inputValorToken1);
-			System.out.println(" MAX: " + valor);
-			System.out.println("TOKEN DESTINO: " + tokenDestino);
-			System.out.println("VALOR: " + valorInput);
-			Date date = java.util.Calendar.getInstance().getTime();
-			System.out.println(date);
-			IrParaPagina("https://pancakeswap.finance/swap");
-			return this;
+	
 
 		}
 		return this;
